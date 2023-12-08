@@ -5,9 +5,8 @@ export const useStore = create(
   persist(
     () => ({
       code: "",
-      title: "Untitled",
+      title: "",
       theme: "hyper",
-      darkMode: true,
       showBackground: true,
       language: "plaintext",
       autoDetectLanguage: false,

@@ -1,24 +1,37 @@
 import { codeSnippets } from "@/config";
 import hljs from "highlight.js";
 import Editor from "react-simple-code-editor";
+import { useStore } from "@/store";
+import { cn } from "@/lib/utils";
 
 export default function CodeEditor() {
+  const store = useStore();
+
   return (
-    <div className="min-w-[400px] border-2 rounded-xl shadow-2xl bg-black/75 border-gray-600/40">
-      <header className="grid grid-cols-6 gap-3 items-center px-4 py-3">
+    <div className="min-w-[400px] border-2 rounded-[17px] shadow-2xl border-gray-600/40 relative">
+      <div className="absolute opacity-100 hljs inset-0 rounded-[15px]"></div>
+      <header className="grid grid-cols-6 gap-3 items-center px-4 pb-2 relative">
         <div className="flex gap-1.5">
-          <div className="rounded-full h-3 w-3 bg-gray-800" />
-          <div className="rounded-full h-3 w-3 bg-gray-800" />
-          <div className="rounded-full h-3 w-3 bg-gray-800" />
+          <div className="rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer" />
+          <div className="rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer" />
+          <div className="rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer" />
         </div>
-        <div className="flex col-span-4 justify-center">
+        <div className="flex col-span-4 justify-center relative group bg-black/20 rounded-b-xl mx-4">
           <input
-            className="bg-transparent text-center text-gray-400 text-sm font-medium focus:outline-none"
+            className="bg-transparent text-center text-gray-400 text-sm font-medium focus:outline-none py-2 w-full absolute"
             type="text"
-            value="Untitled"
+            value={store.title}
+            onChange={(e) => useStore.setState({ title: e.target.value })}
             spellCheck={false}
-            onClick={(e) => (e.target as HTMLInputElement).select()}
           />
+          <span
+            className={cn(
+              "text-center text-gray-400 text-sm font-medium focus:outline-none py-2 w-full group-focus-within:invisible",
+              store.title ? "invisible" : "",
+            )}
+          >
+            Untitled
+          </span>
         </div>
       </header>
       <div className="px-4 pb-4">
