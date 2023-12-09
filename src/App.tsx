@@ -14,7 +14,7 @@ function App() {
   const editorRef = useRef(null)
 
   return (
-    <main className='min-h-screen bg-neutral-950 text-white'>
+    <main className='min-h-screen bg-background text-white'>
       <Sidebar />
 
       <div className='flex justify-center items-center pl-80'>
