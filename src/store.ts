@@ -6,7 +6,7 @@ export const useStore = create(
     () => ({
       code: "",
       title: "",
-      theme: "hyper",
+      theme: "oceanic",
       showBackground: true,
       language: "plaintext",
       autoDetectLanguage: false,

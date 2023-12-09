@@ -1,11 +1,28 @@
-import { codeSnippets } from "@/config";
+import { codeSnippets, fonts } from "@/config";
 import hljs from "highlight.js";
 import Editor from "react-simple-code-editor";
 import { useStore } from "@/store";
 import { cn } from "@/lib/utils";
+import { useEffect } from "react";
+import flourite from "flourite";
 
 export default function CodeEditor() {
   const store = useStore();
+
+  useEffect(() => {
+    const randomSnippet =
+      codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+    useStore.setState(randomSnippet);
+  }, []);
+
+  useEffect(() => {
+    if (store.autoDetectLanguage) {
+      const { language } = flourite(store.code, { noUnknown: true });
+      useStore.setState({
+        language: language.toLowerCase() || "plaintext",
+      });
+    }
+  }, [store.autoDetectLanguage, store.code]);
 
   return (
     <div className="min-w-[400px] border-2 rounded-[17px] shadow-2xl border-gray-600/40 relative">
@@ -36,13 +53,15 @@ export default function CodeEditor() {
       </header>
       <div className="px-4 pb-4">
         <Editor
-          value={codeSnippets[0].code}
+          value={store.code}
+          onValueChange={(code) => useStore.setState({ code })}
           highlight={(code) =>
-            hljs.highlight(code, { language: codeSnippets[0].language }).value
+            hljs.highlight(code, { language: store.language || "plaintext" })
+              .value
           }
           style={{
-            fontStyle: "Jetbrains Mono",
-            fontSize: 18,
+            fontFamily: fonts[store.fontStyle].name,
+            fontSize: store.fontSize,
           }}
           textareaClassName="focus:outline-none"
           onClick={(e) => (e.target as HTMLTextAreaElement).select()}
