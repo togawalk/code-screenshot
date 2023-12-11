@@ -73,8 +73,8 @@ export default function CodeEditor() {
           onValueChange={(code) => useStore.setState({ code })}
           padding={10}
           highlight={(code) => hightlightWithLineNumbers(code)}
-          textareaClassName={`!pl-[${lineNumberChars+1}ch]`}
-          preClassName={`!pl-[${lineNumberChars+1}ch]`}
+          textareaClassName={`!pl-${lineNumberChars+1}ch`}
+          preClassName={`!pl-${lineNumberChars+1}ch`}
           style={{
             fontFamily: fonts[store.fontStyle].name,
             fontSize: store.fontSize,

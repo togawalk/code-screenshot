@@ -83,32 +83,14 @@
 
 }
 
-.w-\[1ch\] {
-  width: 1ch;
+@for $i from 1 through 4 {
+  .w-#{$i}ch {
+    width: #{$i}ch;
+  }
 }
 
-.w-\[2ch\] {
-  width: 2ch;
-}
-
-.w-\[3ch\] {
-  width: 3ch;
-}
-
-.\!pl-\[1ch\] {
-  padding-left: 1ch !important;
-}
-
-.\!pl-\[2ch\] {
-  padding-left: 2ch !important;
-}
-
-
-.\!pl-\[3ch\] {
-  padding-left: 3ch !important;
-}
-
-
-.\!pl-\[4ch\] {
-  padding-left: 4ch !important;
+@for $i from 1 through 4 {
+  .\!pl-#{$i}ch {
+    padding-left: #{$i}ch !important;
+  }
 }
