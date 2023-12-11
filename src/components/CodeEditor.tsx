@@ -3,11 +3,12 @@ import hljs from 'highlight.js'
 import Editor from 'react-simple-code-editor'
 import { useStore } from '@/store'
 import { cn } from '@/lib/utils'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import flourite from 'flourite'
 
 export default function CodeEditor() {
   const store = useStore()
+  const [lineNumberChars, setLineNumberChars] = useState(1)
 
   useEffect(() => {
     const randomSnippet =
@@ -23,6 +24,21 @@ export default function CodeEditor() {
       })
     }
   }, [store.autoDetectLanguage, store.code])
+
+  const hightlightWithLineNumbers = (code) => {
+    const lines = code.split('\n').length
+    setLineNumberChars(Math.floor(lines / 10) + 1)
+    return hljs
+      .highlight(code, { language: store.language || 'plaintext' })
+      .value.split('\n')
+      .map(
+        (line, i) =>
+          `<span class='editorLineNumber w-[${lineNumberChars}ch]'>${
+            i + 1
+          }</span>${line}`
+      )
+      .join('\n')
+  }
 
   return (
     <div className='min-w-[400px] border-2 rounded-[17px] shadow-2xl border-gray-600/40 relative'>
@@ -55,16 +71,16 @@ export default function CodeEditor() {
         <Editor
           value={store.code}
           onValueChange={(code) => useStore.setState({ code })}
-          highlight={(code) =>
-            hljs.highlight(code, { language: store.language || 'plaintext' })
-              .value
-          }
+          padding={10}
+          highlight={(code) => hightlightWithLineNumbers(code)}
+          textareaClassName={`!pl-[${lineNumberChars+1}ch]`}
+          preClassName={`!pl-[${lineNumberChars+1}ch]`}
           style={{
             fontFamily: fonts[store.fontStyle].name,
             fontSize: store.fontSize,
           }}
-          textareaClassName='focus:outline-none'
-          onClick={(e) => (e.target as HTMLTextAreaElement).select()}
+          className='editor'
+          textareaId='codeArea'
         />
       </div>
     </div>

@@ -74,3 +74,41 @@
     @apply bg-background text-foreground;
   }
 }
+
+.editor .editorLineNumber {
+  position: absolute;
+  left: 0px;
+  text-align: right;
+  font-weight: 100;
+
+}
+
+.w-\[1ch\] {
+  width: 1ch;
+}
+
+.w-\[2ch\] {
+  width: 2ch;
+}
+
+.w-\[3ch\] {
+  width: 3ch;
+}
+
+.\!pl-\[1ch\] {
+  padding-left: 1ch !important;
+}
+
+.\!pl-\[2ch\] {
+  padding-left: 2ch !important;
+}
+
+
+.\!pl-\[3ch\] {
+  padding-left: 3ch !important;
+}
+
+
+.\!pl-\[4ch\] {
+  padding-left: 4ch !important;
+}
