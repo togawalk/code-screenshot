@@ -17,7 +17,7 @@ function App() {
     <main className='min-h-screen bg-background text-white'>
       <Sidebar />
 
-      <div className='flex justify-center items-center pl-80'>
+      <div className='flex justify-center items-center pl-80 h-screen'>
         <link
           rel='stylesheet'
           href={themes[theme].theme}
@@ -30,7 +30,7 @@ function App() {
         />
         <div
           className={cn(
-            'overflow-hidden mb-2 transition-all ease-out',
+            'overflow-hidden transition-all ease-out',
             showBackground ? themes[theme].background : 'ring ring-neutral-900'
           )}
           style={{ padding }}
