@@ -25,21 +25,6 @@ export default function CodeEditor() {
     }
   }, [store.autoDetectLanguage, store.code])
 
-  const hightlightWithLineNumbers = (code) => {
-    const lines = code.split('\n').length
-    setLineNumberChars(Math.floor(lines / 10) + 1)
-    return hljs
-      .highlight(code, { language: store.language || 'plaintext' })
-      .value.split('\n')
-      .map(
-        (line, i) =>
-          `<span class='editorLineNumber w-[${lineNumberChars}ch]'>${
-            i + 1
-          }</span>${line}`
-      )
-      .join('\n')
-  }
-
   return (
     <div className='min-w-[400px] border-2 rounded-[17px] shadow-2xl border-gray-600/40 relative'>
       <div className='absolute opacity-100 hljs inset-0 rounded-[15px]'></div>
@@ -72,9 +57,11 @@ export default function CodeEditor() {
           value={store.code}
           onValueChange={(code) => useStore.setState({ code })}
           padding={10}
-          highlight={(code) => hightlightWithLineNumbers(code)}
-          textareaClassName={`!pl-${lineNumberChars+1}ch`}
-          preClassName={`!pl-${lineNumberChars+1}ch`}
+          highlight={(code) =>
+            hljs.highlight(code, {
+              language: store.language || 'plaintext',
+            }).value
+          }
           style={{
             fontFamily: fonts[store.fontStyle].name,
             fontSize: store.fontSize,
