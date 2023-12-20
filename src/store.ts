@@ -30,7 +30,7 @@ export const useStore = create(
       autoDetectLanguage: false,
       fontSize: 18,
       fontStyle: 'jetBrainsMono',
-      padding: 64,
+      padding: 24,
     }),
     {
       name: 'user-preferences',

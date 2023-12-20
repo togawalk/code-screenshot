@@ -23,15 +23,16 @@ function App() {
       code: state.code ? atob(state.code) : '',
       autoDetectLanguage: state.autoDetectLanguage === 'true',
       fontSize: Number(state.fontSize || 18),
-      padding: Number(state.padding || 64),
+      padding: Number(state.padding || 24),
     })
   }, [])
 
   return (
-    <main className='min-h-screen bg-background text-white'>
+    <main className='min-h-screen text-white'>
       <Sidebar />
 
-      <div className='flex justify-center items-center pl-80 h-screen'>
+      <div className='relative flex justify-center items-center pl-80 h-screen'>
+        <div className='ml-80 absolute inset-0 bg-gradient-to-tr from-background from-70% to-gray-800'></div>
         <link
           rel='stylesheet'
           href={themes[theme].theme}
@@ -43,10 +44,7 @@ function App() {
           crossOrigin='anonymous'
         />
         <div
-          className={cn(
-            'overflow-hidden transition-all ease-out',
-            showBackground ? themes[theme].background : 'ring ring-neutral-900'
-          )}
+          className="z-10 border-2 border-input rounded"
           style={{ padding }}
           ref={editorRef}
         >

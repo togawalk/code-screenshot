@@ -6,13 +6,19 @@ import ThemeSelect from './controls/ThemeSelect'
 
 export default function Sidebar() {
   return (
-    <aside className='w-80 flex flex-col fixed bg-card top-0 bottom-0 border'>
+    <aside className='z-20 w-80 flex flex-col fixed bg-card top-0 bottom-0 border'>
       <SettingsGroup title='Editor'>
         <fieldset className='flex items-center justify-between'>
           <Label htmlFor='show-background' className='text-muted-foreground'>
             Background
           </Label>
           <Switch id='show-background' />
+        </fieldset>
+        <fieldset className='flex items-center justify-between'>
+          <Label htmlFor='background-blur' className='text-muted-foreground'>
+            Background Blur
+          </Label>
+          <Switch id='background-blur' />
         </fieldset>
         <FontSelect />
         <ThemeSelect />
