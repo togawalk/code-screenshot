@@ -3,12 +3,11 @@ import hljs from 'highlight.js'
 import Editor from 'react-simple-code-editor'
 import { useStore } from '@/store'
 import { cn } from '@/lib/utils'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import flourite from 'flourite'
 
 export default function CodeEditor() {
   const store = useStore()
-  const [lineNumberChars, setLineNumberChars] = useState(1)
 
   useEffect(() => {
     const randomSnippet =

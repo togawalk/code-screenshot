@@ -2,6 +2,7 @@ import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import SettingsGroup from './SettingsGroup'
 import FontSelect from './controls/FontSelect'
+import ThemeSelect from './controls/ThemeSelect'
 
 export default function Sidebar() {
   return (
@@ -14,6 +15,7 @@ export default function Sidebar() {
           <Switch id='show-background' />
         </fieldset>
         <FontSelect />
+        <ThemeSelect />
         <fieldset className='flex items-center justify-between'>
           <Label htmlFor='show-title-bar' className='text-muted-foreground'>
             Title Bar

@@ -2,7 +2,7 @@ import { useStore } from '@/store'
 import CodeEditor from '@/components/CodeEditor'
 import { themes, fonts } from '@/config'
 import { cn } from './lib/utils'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Sidebar from './components/Sidebar'
 
 function App() {
@@ -12,6 +12,20 @@ function App() {
   const fontStyle = useStore((state) => state.fontStyle)
 
   const editorRef = useRef(null)
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search)
+    if (queryParams.size === 0) return
+    const state = Object.fromEntries(queryParams)
+
+    useStore.setState({
+      ...state,
+      code: state.code ? atob(state.code) : '',
+      autoDetectLanguage: state.autoDetectLanguage === 'true',
+      fontSize: Number(state.fontSize || 18),
+      padding: Number(state.padding || 64),
+    })
+  }, [])
 
   return (
     <main className='min-h-screen bg-background text-white'>
