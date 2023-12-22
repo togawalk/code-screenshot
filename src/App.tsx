@@ -1,14 +1,14 @@
 import { useStore } from '@/store'
 import CodeEditor from '@/components/CodeEditor'
 import { themes, fonts } from '@/config'
-import { cn } from './lib/utils'
 import { useEffect, useRef } from 'react'
 import Sidebar from './components/Sidebar'
 
 function App() {
   const theme = useStore((state) => state.theme)
   const padding = useStore((state) => state.padding)
-  const showBackground = useStore((state) => state.showBackground)
+  // const showBackground = useStore((state) => state.showBackground)
+  // const backgroundBlur = useStore((state) => state.backgroundBlur)
   const fontStyle = useStore((state) => state.fontStyle)
 
   const editorRef = useRef(null)
@@ -44,7 +44,7 @@ function App() {
           crossOrigin='anonymous'
         />
         <div
-          className="z-10 border-2 border-input rounded"
+          className='z-10 border-2 border-input rounded'
           style={{ padding }}
           ref={editorRef}
         >

@@ -12,9 +12,11 @@ export interface BearState {
     | 'monokaiSublime'
     | 'tokyoNightDark'
   showBackground: boolean
+  backgroundBlur: boolean
   language: string
   autoDetectLanguage: boolean
   fontSize: number
+  titleBar: boolean
   fontStyle: string
   padding: number
 }
@@ -26,6 +28,8 @@ export const useStore = create(
       title: '',
       theme: 'materialDarker',
       showBackground: true,
+      backgroundBlur: true,
+      titleBar: true,
       language: 'plaintext',
       autoDetectLanguage: false,
       fontSize: 18,
