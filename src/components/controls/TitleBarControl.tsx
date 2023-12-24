@@ -2,7 +2,7 @@ import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import useStore from '@/store'
 
-export const TitleBarControl = () => {
+export default function TitleBarControl() {
   const showTitleBar = useStore((state) => state.showTitleBar)
   return (
     <fieldset className='flex items-center justify-between min-h-[36px]'>

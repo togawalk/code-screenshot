@@ -30,7 +30,11 @@ export default function CodeEditor() {
 
       {store.showTitleBar ? (
         <header className='grid grid-cols-6 gap-3 items-center px-4 relative'>
-          <div className={`flex gap-1.5 ${store.showTraficLights ? '' : 'invisible'}`}>
+          <div
+            className={`flex gap-1.5 ${
+              store.showTraficLights ? '' : 'invisible'
+            }`}
+          >
             <div className='rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer' />
             <div className='rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer' />
             <div className='rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer' />
