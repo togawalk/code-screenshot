@@ -28,9 +28,9 @@ export default function CodeEditor() {
     <div className='min-w-[400px] border-2 rounded-[10px] shadow-2xl border-gray-600/40 relative'>
       <div className='absolute opacity-100 hljs inset-0 rounded-[8px]'></div>
 
-      {store.titleBar ? (
+      {store.showTitleBar ? (
         <header className='grid grid-cols-6 gap-3 items-center px-4 relative'>
-          <div className='flex gap-1.5'>
+          <div className={`flex gap-1.5 ${store.showTraficLights ? '' : 'invisible'}`}>
             <div className='rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer' />
             <div className='rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer' />
             <div className='rounded-full h-3 w-3 bg-gray-500/50 cursor-pointer' />

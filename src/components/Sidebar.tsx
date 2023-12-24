@@ -1,13 +1,19 @@
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import SettingsGroup from './SettingsGroup'
-import FontSelect from './controls/FontSelect'
-import ThemeSelect from './controls/ThemeSelect'
+import {
+  FontSelect,
+  ThemeSelect,
+  TitleBarControl,
+  TraficLightsControl,
+} from '@/components/controls'
+
+import useStore from '@/store'
 
 export default function Sidebar() {
+  const showTitleBar = useStore((state) => state.showTitleBar)
   return (
     <aside className='z-20 w-80 flex flex-col fixed bg-card top-0 bottom-0 border space-y-6 py-4'>
-
       <SettingsGroup title='Frame'>
         <fieldset className='flex items-center justify-between min-h-[36px]'>
           <Label htmlFor='show-background' className='text-muted-foreground'>
@@ -20,7 +26,6 @@ export default function Sidebar() {
             Padding
           </Label>
         </fieldset>
-
       </SettingsGroup>
       <SettingsGroup title='Editor'>
         <fieldset className='flex items-center justify-between min-h-[36px]'>
@@ -31,18 +36,8 @@ export default function Sidebar() {
         </fieldset>
         <FontSelect />
         <ThemeSelect />
-        <fieldset className='flex items-center justify-between min-h-[36px]'>
-          <Label htmlFor='show-title-bar' className='text-muted-foreground'>
-            Title Bar
-          </Label>
-          <Switch id='show-title-bar' />
-        </fieldset>
-        <fieldset className='flex items-center justify-between min-h-[36px]'>
-          <Label htmlFor='show-trafic-lights' className='text-muted-foreground'>
-            Trafic Lights
-          </Label>
-          <Switch id='show-trafic-lights' />
-        </fieldset>
+        <TitleBarControl />
+        {showTitleBar && <TraficLightsControl />}
       </SettingsGroup>
     </aside>
   )

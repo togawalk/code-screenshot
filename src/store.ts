@@ -16,7 +16,8 @@ export interface BearState {
   language: string
   autoDetectLanguage: boolean
   fontSize: number
-  titleBar: boolean
+  showTitleBar: boolean
+  showTraficLights: boolean
   fontStyle: string
   padding: number
 }
@@ -29,7 +30,8 @@ export const useStore = create(
       theme: 'materialDarker',
       showBackground: true,
       backgroundBlur: true,
-      titleBar: true,
+      showTitleBar: true,
+      showTraficLights: true,
       language: 'plaintext',
       autoDetectLanguage: false,
       fontSize: 18,
