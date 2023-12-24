@@ -6,15 +6,24 @@ import ThemeSelect from './controls/ThemeSelect'
 
 export default function Sidebar() {
   return (
-    <aside className='z-20 w-80 flex flex-col fixed bg-card top-0 bottom-0 border'>
-      <SettingsGroup title='Editor'>
-        <fieldset className='flex items-center justify-between'>
+    <aside className='z-20 w-80 flex flex-col fixed bg-card top-0 bottom-0 border space-y-6 py-4'>
+
+      <SettingsGroup title='Frame'>
+        <fieldset className='flex items-center justify-between min-h-[36px]'>
           <Label htmlFor='show-background' className='text-muted-foreground'>
             Background
           </Label>
           <Switch id='show-background' />
         </fieldset>
-        <fieldset className='flex items-center justify-between'>
+        <fieldset className='flex items-center justify-between min-h-[36px]'>
+          <Label htmlFor='show-background' className='text-muted-foreground'>
+            Padding
+          </Label>
+        </fieldset>
+
+      </SettingsGroup>
+      <SettingsGroup title='Editor'>
+        <fieldset className='flex items-center justify-between min-h-[36px]'>
           <Label htmlFor='background-blur' className='text-muted-foreground'>
             Background Blur
           </Label>
@@ -22,13 +31,13 @@ export default function Sidebar() {
         </fieldset>
         <FontSelect />
         <ThemeSelect />
-        <fieldset className='flex items-center justify-between'>
+        <fieldset className='flex items-center justify-between min-h-[36px]'>
           <Label htmlFor='show-title-bar' className='text-muted-foreground'>
             Title Bar
           </Label>
           <Switch id='show-title-bar' />
         </fieldset>
-        <fieldset className='flex items-center justify-between'>
+        <fieldset className='flex items-center justify-between min-h-[36px]'>
           <Label htmlFor='show-trafic-lights' className='text-muted-foreground'>
             Trafic Lights
           </Label>
